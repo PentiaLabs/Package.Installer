@@ -1,0 +1,10 @@
+{
+    "configs": [
+      {
+        "name": "debug",
+        "rootFolder": "C:\\websites\\pentia.boilerplate.local",
+        "websiteRoot" :"C:\\websites\\pentia.boilerplate.local\\Website",
+        "websiteDataRoot" :"C:\\websites\\pentia.boilerplate.local\\Website\\Data"
+      }
+    ]
+}
