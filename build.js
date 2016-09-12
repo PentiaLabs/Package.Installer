@@ -10,8 +10,6 @@ function Build() {
   this.cwd = cwd;
   this.env = "debug";
   this.solutionConfiguration = this.readConfigurationFile();
-  this.frontendBuilder = this.solutionConfiguration.frontendBuilder;
-  this.AlwaysApplyName = this.solutionConfiguration.configurationTransform.AlwaysApplyName;
   this.setActiveConfiguration();
 }
 
