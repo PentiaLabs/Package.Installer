@@ -3,7 +3,7 @@ var path = require("path");
 var gutil = require("gulp-util");
 var fs = require("fs");
 var argv = require("minimist")(process.argv.slice(2));
-var powershell = require("./modules/powershell");
+
 var cwd = argv.cwd ? argv.cwd : process.env.INIT_CWD;
 
 function Build() {
@@ -22,14 +22,6 @@ Build.prototype.setActiveConfiguration = function () {
   }
   throw "Cannot find environment configuration for " + this.env;
 };
-
-gulp.task("install-packages", function (callback) {
-  this.logEvent("builder", "Installing packages");
-  var psFile = path.join(path.dirname(fs.realpathSync(__filename)), "../powershell-scripts/Install-packages.ps1");
-  var packagesConfig = path.join(path.dirname(fs.realpathSync(__filename)), "../solution-packages.json");
-  powershell.runAsync(psFile, " -packagesFileLocation '" + packagesConfig + "'" + " -webRootPath " + config.websiteRoot + " -dataRootPath " + config.websiteDataRoot, callback);
-});
-
 
 Build.prototype.setEnvironment = function (env) {
   if (typeof env !== "undefined") {
