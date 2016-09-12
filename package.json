@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
-    "install": "./copy-config.js"
+    "install": "copy-config.js"
   },
   "bin": {
     "sitecore-package-manager": "./bin/sitecore-package-manager.js"
