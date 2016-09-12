@@ -20,7 +20,7 @@
     "gulp": "./node_modules/.bin/gulp"
   },
   "bin": {
-    "sitecore-package-manager": "./bin/pentia-builder.js"
+    "sitecore-package-manager": "./bin/sitecore-package-manager.js"
   },
   "dependencies": {
     "gulp": "^3.9.0",
