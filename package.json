@@ -17,7 +17,8 @@
     "Pentia <dev@pentia.dk> (http://www.pentia.dk)"
   ],
   "scripts": {
-    "gulp": "./node_modules/.bin/gulp"
+    "gulp": "./node_modules/.bin/gulp",
+    "install": "./copy-config.js"
   },
   "bin": {
     "sitecore-package-manager": "./bin/sitecore-package-manager.js"
