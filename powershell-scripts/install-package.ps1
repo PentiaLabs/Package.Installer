@@ -21,7 +21,7 @@ function Install-NugetPackage (
             Register-PackageSource -Name $package.packageName -Location $package.location -ProviderName NuGet -Trusted
         }
 
-        $packagesource = Get-PackageSource -Location $packageLocation
+        $packagesource = Get-PackageSource |  Where-Object -Property location -eq $package.location | Select-Object -First 1
         Find-Package -Source $packagesource.source -Name $package.packageName -RequiredVersion $package.version | Install-Package
         $nugetPackage = Get-Package -ProviderName NuGet -AllVersions | Where-Object {$_.Name -eq $package.packageName -and $_.version -eq $package.version} 
     }
