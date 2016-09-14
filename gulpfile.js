@@ -19,6 +19,20 @@ gulp.task("install-packages", function (callback) {
   build.logEvent("builder", "Installing packages");
   var psFile = path.join(path.dirname(fs.realpathSync(__filename)), "/powershell-scripts/Install-packages.ps1");
   var packagesConfig = path.join(process.cwd(), "/solution-packages.json");
+
+  var websiteRoot = build.config.websiteRoot;
+  var websiteDataRoot = build.config.websiteDataRoot;
+
+  if(!path.isAbsolute(websiteRoot))
+  {
+    websiteRoot = path.join(process.cwd(),websiteRoot);
+  }
+
+  if(!path.isAbsolute(websiteDataRoot))
+  {
+    websiteDataRoot = path.join(process.cwd(),websiteDataRoot);
+  }
+
   powershell.runAsync(psFile, " -packagesFileLocation '" + packagesConfig + "'" + " -webRootPath " + build.config.websiteRoot + " -dataRootPath " + build.config.websiteDataRoot, callback);
 });
 
