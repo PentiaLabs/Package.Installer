@@ -30,7 +30,8 @@
     "shelljs": "^0.5.3",
     "require-dir": "^0.3.0",
     "minimist": "^1.2.0",
-    "cwd": "^0.10.0"
+    "cwd": "^0.10.0",
+    "file-exists": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/PentiaLabs/Pentia.Builder/issues"
