@@ -33,7 +33,7 @@ gulp.task("install-packages", function (callback) {
     websiteDataRoot = path.join(process.cwd(),websiteDataRoot);
   }
 
-  powershell.runAsync(psFile, " -packagesFileLocation '" + packagesConfig + "'" + " -webRootPath " + build.config.websiteRoot + " -dataRootPath " + build.config.websiteDataRoot, callback);
+  powershell.runAsync(psFile, " -packagesFileLocation '" + packagesConfig + "'" + " -webRootPath " + websiteRoot + " -dataRootPath " + websiteDataRoot, callback);
 });
 
 gulp.task("default", function () {
