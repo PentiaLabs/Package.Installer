@@ -2,7 +2,7 @@
   "name": "sitecore-package-manager",
   "version": "0.1.0",
   "private": false,
-  "description": "Pentia Sitecore builder",
+  "description": "Sitecore Package Manager",
   "keywords": [
     "sitecore",
     "packages",

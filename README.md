@@ -1,4 +1,5 @@
 # Sitecore-package-manager
+This package helps with handling run time dependecies in Sitecore, by getting them from a NuGet feed.
 
 The package requires WMF 5.1 this is built in, in windows 10 Anniversary edition. 
 For earlier editions of windows use the link below:
