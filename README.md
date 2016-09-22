@@ -1,20 +1,19 @@
-# Pentia.Builder
+# Sitecore-package-manager
+
+The package requires WMF 5.1 this is built in, in windows 10 Anniversary edition. 
+For earlier editions of windows use the link below:
+https://www.microsoft.com/en-us/download/details.aspx?id=53347
+
 
 ## configuration files
 ### solution-config.json:
-Contains all the environment specific settings for the solution
+Contains the environment specific paths for the packages to be installed to
 
-- **AlwaysApplyName**: is the name that will be used to identify configuration transform files that will always be run.
-forexample web.always.config will always be applied if the setting is set to "always"
-- **showError**: Controls if the msbuild will output errors or not
-- **showStandardOutput**: Controls if the standard output of the msbuild tasks will be shown in the commandline
-- **toolsversion**: Determines which version of the msbuild tools are being used
-- **verbosity**: controls the level of verbosity for the msbuild tasks
-- **location**: is the path to where the frontend project is placed
 - **configs**: is a array of the build configurations and their settings
 - **name**:is the name of the configuration, this should match the name of the build configuration in visual studio
-- **websiteRoot**: the path to root of the website
-- **websiteDataRoot**: the path to the root of the data folder for the website
+- **websiteRoot**: the path to root of the website - this is where the website folder of the package will be copied to
+- **websiteDataRoot**: the path to the root of the data folder for the website - this is where the data folder of the nuget package will be copied to
+
 
 ### solution-packages.json:
 Contains the list of packages nessecary for the solution to run.
@@ -29,10 +28,3 @@ The website folder will be copied to the path in the solution-config.json settin
 - **version**: the specific version of the package to be installed
 
 - **location**: the location where the file is located, can be a file share, or http feed.
-
-## Features
-
-1. Get Sitecore
-2. Publish site to local webroot
-3. Install Packages from packages.json to local webroot
-4. Do configuration transforms
