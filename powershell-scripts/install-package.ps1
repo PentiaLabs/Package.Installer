@@ -1,3 +1,4 @@
+#Requires -RunAsAdministrator
 function Install-NugetPackage (
     [Parameter(Mandatory=$true)]
     [object]$package,
@@ -28,10 +29,17 @@ function Install-NugetPackage (
 
     Write-Host "Copying" $package.packageName
     $packagePath = $nugetPackage | Select-Object -Property Source | foreach { Split-Path -Path $_.Source }
-    Write-Host "Copying " $package.packageName " Webroot"
-    robocopy "$packagePath\webroot" "$webRootPath" *.* /E /MT 64 /NFL /NP /NDL /NJH 
-    Write-Host "Copying " $package.packageName " Data Folder"
-    robocopy "$packagePath\Data" "$dataRootPath" *.* /E /MT 64 /NFL /NP /NDL /NJH
+    if(Test-Path -Path "$packagePath\webroot")
+    {
+        Write-Host "Copying " $package.packageName " Webroot"
+        robocopy "$packagePath\webroot" "$webRootPath" *.* /E /MT 64 /NFL /NP /NDL /NJH 
+    }
+
+    if(Test-Path -Path "$packagePath\Data")
+    {
+        Write-Host "Copying " $package.packageName " Data Folder"
+        robocopy "$packagePath\Data" "$dataRootPath" *.* /E /MT 64 /NFL /NP /NDL /NJH
+    }
 
     $hasDeployScript = (Get-ChildItem -Path "$webRootPath" -Filter packageDeploy.ps1).Count -lt 0
 

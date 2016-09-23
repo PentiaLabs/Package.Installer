@@ -5,7 +5,6 @@ The package requires WMF 5.1 this is built in, in windows 10 Anniversary edition
 For earlier editions of windows use the link below:
 https://www.microsoft.com/en-us/download/details.aspx?id=53347
 
-
 ## configuration files
 ### solution-config.json:
 Contains the environment specific paths for the packages to be installed to

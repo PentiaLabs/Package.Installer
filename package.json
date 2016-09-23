@@ -1,13 +1,14 @@
 {
   "name": "sitecore-package-manager",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "Sitecore Package Manager",
   "keywords": [
     "sitecore",
     "packages",
     "gulp",
-    "powershell"
+    "powershell",
+    "windows"
   ],
   "repository": {
     "type": "git",
@@ -34,9 +35,9 @@
     "file-exists": "^2.0.0"
   },
   "bugs": {
-    "url": "https://github.com/PentiaLabs/Pentia.Builder/issues"
+    "url": "https://github.com/PentiaLabs/Package.Installer/issues"
   },
-  "homepage": "https://github.com/PentiaLabs/Pentia.Builder#readme",
+  "homepage": "https://github.com/PentiaLabs/Package.Installer#readme",
   "main": "gulpfile.js",
   "author": "Emil Klein <eok@pentia.dk>",
   "license": "ISC"
