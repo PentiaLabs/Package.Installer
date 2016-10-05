@@ -26,7 +26,7 @@ function Install-NugetPackage (
             if($statusCode -eq 401)
             {
                 Write-Verbose ("Getting credentials for endpoint")
-                $Credential = Get-Credential;
+                $Credential = Get-Credential -Message ("Please enter your credentials for " + $package.location);
             }
             elseif ($statusCode -gt 499 -and $statusCode -lt 600) {
                 Write-Error ("package location endpoint " + $package.location + " failed with error code " + $statusCode)
