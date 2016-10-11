@@ -15,15 +15,14 @@ function Install-NugetPackage (
     Write-Host "Getting" $package.packageName "Package"
     $nugetPackage = Get-Package -ProviderName NuGet -AllVersions | Where-Object {$_.Name -eq $package.packageName -and $_.version -eq $package.Version} 
 
-
-
     if(-not ($nugetPackage))
     {
         Write-Host ("Package not found locally installing from " + $package.location)
         
         $Credential = [System.Management.Automation.PSCredential]::Empty
         if ($username -ne $null -and $password -ne $null) {
-            $Credential =  New-Object System.Management.Automation.PSCredential -ArgumentList $username, $password
+            $userPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
+            $Credential =  New-Object System.Management.Automation.PSCredential($username, $userPassword)
         }
 
         Write-Verbose ("Testing if location is url")
