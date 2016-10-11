@@ -5,6 +5,11 @@ The package requires WMF 5.1 this is built in, in windows 10 Anniversary edition
 For earlier editions of windows use the link below:
 https://www.microsoft.com/en-us/download/details.aspx?id=53347
 
+## Creating a package 
+In order to create a package the nuget package must contains two folders; one called website, and one called data.
+In order to help you create the package, there is a yeoman generator. 
+https://github.com/PentiaLabs/generator-sc-package
+
 ## configuration files
 ### solution-config.json:
 Contains the environment specific paths for the packages to be installed to
