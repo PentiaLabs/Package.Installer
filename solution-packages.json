@@ -1,4 +1,5 @@
 {
+    "credentials": "c:\\buildagent\\creds\\credentials.json",
     "packages":[
         {
             "packageName": "Sitecore.Full",

@@ -28,7 +28,17 @@ if((Test-Path -Path $dataRootPath) -eq $false)
 
 $packages = (Get-Content $packagesFileLocation -Raw) | ConvertFrom-Json
 
+$username = ""; 
+$password = "";
+
+if (Test-Path $packages.credentials) {
+    $credentials = (Get-Content $packages.credentials -Raw) | ConvertFrom-Json
+
+    $username = $credentials.username
+    $password = $credentials.password
+}
+
 foreach ($package in $packages.packages) {
-    Install-NugetPackage -package $package -webRootPath $webRootPath -dataRootPath $dataRootPath
+    Install-NugetPackage -package $package -webRootPath $webRootPath -dataRootPath $dataRootPath $username $password
 }
 
