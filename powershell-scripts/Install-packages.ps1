@@ -25,11 +25,10 @@ if((Test-Path -Path $dataRootPath) -eq $false)
     Write-Host "Creating " $dataRootPath 
     New-Item $dataRootPath -type directory > $null
 }
-
 $packages = (Get-Content $packagesFileLocation -Raw) | ConvertFrom-Json
 
-$username = ""; 
-$password = "";
+[string]$username = ""; 
+[string]$password = "";
 
 if (Test-Path $packages.credentials) {
     $credentials = (Get-Content $packages.credentials -Raw) | ConvertFrom-Json
@@ -39,6 +38,5 @@ if (Test-Path $packages.credentials) {
 }
 
 foreach ($package in $packages.packages) {
-    Install-NugetPackage -package $package -webRootPath $webRootPath -dataRootPath $dataRootPath $username $password
+    Install-NugetPackage -package $package -webRootPath $webRootPath -dataRootPath $dataRootPath -username $username -password $password
 }
-

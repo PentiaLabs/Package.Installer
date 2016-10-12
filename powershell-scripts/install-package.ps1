@@ -6,10 +6,10 @@ function Install-NugetPackage (
     [string]$webRootPath,
     [Parameter(Mandatory=$true)]
     [string]$dataRootPath,
-    [Parameter()]
-    [string]$username,
-    [Parameter()]
-    [string]$password) {
+    [Parameter(Mandatory=$False)]
+    [string]$username = [string]::Empty,
+    [Parameter(Mandatory=$False)]
+    [string]$password = [string]::Empty) {
 
     . $PSScriptRoot\Get-WebRequestFromUrl.ps1
     Write-Host "Getting" $package.packageName "Package"
@@ -20,39 +20,33 @@ function Install-NugetPackage (
         Write-Host ("Package not found locally installing from " + $package.location)
         
         $Credential = [System.Management.Automation.PSCredential]::Empty
-        if ($username -ne $null -and $password -ne $null) {
+        if ([string]::IsNullOrWhiteSpace($username) -eq $false -and [string]::IsNullOrWhiteSpace($password) -eq $false) {
             $userPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
             $Credential =  New-Object System.Management.Automation.PSCredential($username, $userPassword)
         }
 
-        Write-Verbose ("Testing if location is url")
-        if($package.location.StartsWith("http://") -or $package.location.StartsWith("https://"))
+        if($Credential -eq [System.Management.Automation.PSCredential]::Empty)
         {
-            Write-Verbose ("Location had been determined to be a url: " + $package.location)
-            Write-Verbose ("Testing if location needs authentication")
-            $request = Get-WebRequestFromUrl -url $package.location
-            $statusCode = [int]$request.StatusCode;
-
-            if($statusCode -eq 401)
+            Write-Verbose ("Testing if location is url")
+            if($package.location.StartsWith("http://") -or $package.location.StartsWith("https://"))
             {
-                Write-Verbose ("Getting credentials for endpoint")
-                $Credential = Get-Credential -Message ("Please enter your credentials for " + $package.location);
-            }
-            elseif ($statusCode -gt 499 -and $statusCode -lt 600) {
-                Write-Error ("package location endpoint " + $package.location + " failed with error code " + $statusCode)
+                Write-Verbose ("Location had been determined to be a url: " + $package.location)
+                Write-Verbose ("Testing if location needs authentication")
+                $request = Get-WebRequestFromUrl -url $package.location
+                $statusCode = [int]$request.StatusCode;
+
+                if($statusCode -eq 401)
+                {
+                    Write-Verbose ("Getting credentials for endpoint")
+                    $Credential = Get-Credential -Message ("Please enter your credentials for " + $package.location);
+                }
+                elseif ($statusCode -gt 499 -and $statusCode -lt 600) {
+                    Write-Error ("package location endpoint " + $package.location + " failed with error code " + $statusCode)
+                }
             }
         }
         
-        $packagesource = Get-PackageSource | Where-Object -Property location -eq $package.location | Select-Object -First 1
-
-        if($packagesource -eq $null)
-        {
-            Write-Host ("PackageSource not found adding new package source")
-            Register-PackageSource -Name ([guid]::NewGuid()) -Location $package.location -ProviderName NuGet -Trusted -Credential $Credential
-        }
-
-        $packagesource = Get-PackageSource |  Where-Object -Property location -eq $package.location | Select-Object -First 1
-        Find-Package -Source $packagesource.source -Name $package.packageName -RequiredVersion $package.version -Credential $Credential | Install-Package -Credential $Credential
+        Find-Package -Source $package.location -Name $package.packageName -RequiredVersion $package.version -Credential $Credential | Install-Package -Credential $Credential -Force
         $nugetPackage = Get-Package -ProviderName NuGet -AllVersions | Where-Object {$_.Name -eq $package.packageName -and $_.version -eq $package.version} 
     }
 
