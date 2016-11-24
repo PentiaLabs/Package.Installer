@@ -1,6 +1,6 @@
 {
   "name": "@pentia/sitecore-package-manager",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "description": "Sitecore Package Manager",
   "keywords": [
