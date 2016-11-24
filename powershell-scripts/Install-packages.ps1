@@ -30,7 +30,7 @@ $packages = (Get-Content $packagesFileLocation -Raw) | ConvertFrom-Json
 [string]$username = ""; 
 [string]$password = "";
 
-if (Test-Path $packages.credentials) {
+if ($packages.credentials -ne $null -And (Test-Path $packages.credentials)) {
     $credentials = (Get-Content $packages.credentials -Raw) | ConvertFrom-Json
 
     $username = $credentials.username
