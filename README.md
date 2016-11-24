@@ -29,7 +29,7 @@ https://www.microsoft.com/en-us/download/details.aspx?id=53347
 ### solution-config.json
 Contains the environment specific paths for the packages to be installed to
 
-```json
+```
 {
     "configs": [{ //is a array of the build configurations and their settings
         "name": "debug", //is the name of the configuration, this should match the name of the build configuration in visual studio
@@ -48,7 +48,7 @@ The nuget package needs to have two folders inside it, one called data and one c
 The data folder will be copied to the path in the solution-config.json setting called websiteDataRoot
 The website folder will be copied to the path in the solution-config.json setting called websiteRoot
 
-```json
+```
 {
     "credentials": "c:\\buildagent\\creds\\credentials.json", //needs to be set, this i used for having a file with credentials for the endpoints
     "packages": [{
