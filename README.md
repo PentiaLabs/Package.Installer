@@ -1,4 +1,10 @@
 # Sitecore-package-manager
+[![npm version](https://img.shields.io/npm/v/sitecore-package-manager.svg?style=flat-square)](http://npmjs.org/sitecore-package-manager)
+[![npm downloads](https://img.shields.io/npm/dm/sitecore-package-manager.svg?style=flat-square)](http://npmjs.org/sitecore-package-manager)
+[![Build Status](https://img.shields.io/appveyor/ci/Saturate/sitecore-package-manager.svg?style=flat-square)](https://ci.appveyor.com/project/Saturate/sitecore-package-manager)
+[![Dependency Status](https://img.shields.io/david/PentiaLabs/Package.Installer.svg?style=flat-square)](https://david-dm.org/PentiaLabs/Package.Installer)
+[![License](https://img.shields.io/npm/l/sitecore-package-manager.svg?style=flat-square)](https://github.com/PentiaLabs/Package.Installer/blob/master/LICENSE)
+
 
 > The sitecore package manager
 
