@@ -17,6 +17,9 @@
             "warn",
             "tab"
         ],
+        "no-console": [
+            "warn"
+        ],
         "quotes": [
             "warn",
             "single"
