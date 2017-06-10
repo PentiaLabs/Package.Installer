@@ -17,7 +17,8 @@
     "Pentia <dev@pentia.dk> (http://www.pentia.dk)"
   ],
   "scripts": {
-    "install": "node ./copy-config.js"
+    "install": "node ./copy-config.js",
+    "test": "eslint ."
   },
   "dependencies": {
     "cwd": "^0.10.0",
@@ -34,5 +35,8 @@
   "homepage": "https://github.com/PentiaLabs/Package.Installer#readme",
   "main": "gulpfile.js",
   "author": "Emil Klein <eok@pentia.dk>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
 }
