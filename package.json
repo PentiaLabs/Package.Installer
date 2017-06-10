@@ -1,7 +1,6 @@
 {
   "name": "@pentia/sitecore-package-manager",
-  "version": "0.1.9",
-  "private": false,
+  "version": "0.1.10",
   "description": "Sitecore Package Manager",
   "keywords": [
     "sitecore",
@@ -21,13 +20,13 @@
     "install": "node ./copy-config.js"
   },
   "dependencies": {
-    "gulp": "^3.9.0",
+    "cwd": "^0.10.0",
+    "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
-    "nopt": "^3.0.6",
-    "shelljs": "^0.5.3",
-    "require-dir": "^0.3.0",
     "minimist": "^1.2.0",
-    "cwd": "^0.10.0"
+    "nopt": "^4.0.1",
+    "require-dir": "^0.3.2",
+    "shelljs": "^0.7.8"
   },
   "bugs": {
     "url": "https://github.com/PentiaLabs/Package.Installer/issues"
