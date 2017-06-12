@@ -1,7 +1,6 @@
 {
   "name": "@pentia/sitecore-package-manager",
-  "version": "0.1.9",
-  "private": false,
+  "version": "0.1.10",
   "description": "Sitecore Package Manager",
   "keywords": [
     "sitecore",
@@ -18,16 +17,15 @@
     "Pentia <dev@pentia.dk> (http://www.pentia.dk)"
   ],
   "scripts": {
-    "install": "node ./copy-config.js"
+    "install": "node ./copy-config.js",
+    "test": "eslint ."
   },
   "dependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
-    "nopt": "^3.0.6",
-    "shelljs": "^0.5.3",
-    "require-dir": "^0.3.0",
     "minimist": "^1.2.0",
-    "cwd": "^0.10.0"
+    "nopt": "^4.0.1",
+    "shelljs": "^0.7.8"
   },
   "bugs": {
     "url": "https://github.com/PentiaLabs/Package.Installer/issues"
@@ -35,5 +33,8 @@
   "homepage": "https://github.com/PentiaLabs/Package.Installer#readme",
   "main": "gulpfile.js",
   "author": "Emil Klein <eok@pentia.dk>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
 }
